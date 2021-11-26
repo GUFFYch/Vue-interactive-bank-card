@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CardChecker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div class="card" id="app" :style="{ backgroundColor: color}">
+        <!-- Здесь будет выводиться ЛОГОТИП БАНКА -->
+        <div class="bank">
+            <img :src="card_bank">
+        </div>
+
+        <!-- Поле для ввода НОМЕРА КАРТЫ -->
+        <div class="number-container">
+            <input type="text" maxlength="16" v-model="card_num" class="input" :class="num_input_checker ? 'input-ok' : 'input-err'" placeholder="Номер карты" v-on:keypress="allowed_nums($event)">
+            <div class="status" :class="num_input_checker ? 'status-ok' : 'status-err'"></div>
+        </div>
+
+        <!-- Поле для ввода ИМЕНИ ДЕРЖАТЕЛЯ -->
+        <div class="name-container">
+            <input type="text" v-model="user_name" :class="name_status_checker ? 'input-ok' : 'input-err'" placeholder="Имя держателя" v-on:keypress="allowed_сhar($event)">
+            <div class="status" :class="name_status_checker ? 'status-ok' : 'status-err'"></div>
+        </div>
+
+        <!-- Логотип ПЛАТЕЖНОЙ СИСТЕМЫ -->
+        <div class="pay-system">
+            <img :src="card_distributor">
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
